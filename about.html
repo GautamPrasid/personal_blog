@@ -7,18 +7,58 @@
     <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
-    <div class="about-section">
-        <img src="img/img7.png"> </div>
-        <div class="inner-container">
-            <h1>About Us</h1>
-            <p class="text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus eius dicta a voluptates sit deleniti autem error eos totam nisi neque voluptates sit deleniti autem error eos totam nisi neque.
-            </p>
-            <div class="skills">
-                <span>Web Design</span>
-                <span>Photoshop & Illustrator</span>
-                <span>Coding</span>
-        </div>
-    </div>
+
+	<!-- added navbar for consistency -->
+	<nav class="navbar">
+		<a href="home.html" target="_blank">
+			<img src="img/logo.png" class="logo">
+		</a>
+		<ul class="links-container">
+			<li class="link-item"><a href="home.html" class="link">home</a></li>
+			<li class="link-item"><a href="editor.html" class="link">editor</a></li>
+		</ul>
+	</nav>
+
+	<!-- fixed nesting: about-section contains image and inner content -->
+	<div class="about-section">
+		<img src="img/img7.png" alt="about image">
+		<div class="inner-container">
+			<h1>About Us</h1>
+			<p class="text">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus eius dicta a voluptates sit deleniti autem error eos totam nisi neque voluptates sit deleniti autem error eos totam nisi neque.
+			</p>
+			<div class="skills">
+				<span>Web Design</span>
+				<span>Photoshop &amp; Illustrator</span>
+				<span>Coding</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- added footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="footer-col">
+					<ul>
+						<li><a href="about.html">about us</a></li>
+						<li><a href="Contact.html">Contact us</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>follow us</h4>
+					<div class="social-links">
+						<a href="#"><i class="fab fa-facebook-f"></i></a>
+						<a href="#"><i class="fab fa-twitter"></i></a>
+						<a href="#"><i class="fab fa-instagram"></i></a>
+						<div class="footerBottom">
+							<p>copyright &copy; 2023 design by <span class="deasigner">prasid</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
 </body>
 </html>

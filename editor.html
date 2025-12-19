@@ -12,6 +12,22 @@
 </head>
 <body>
 
+    <!-- added navbar (same as home.html) -->
+	<nav class="navbar">
+		<a href="home.html" target="_blank">
+			<img src="img/logo.png" class="logo">
+		</a>
+		<ul class="links-container">
+			<li class="link-item"><a href="home.html" class="link">home</a></li>
+			<li class="link-item"><a href="editor.html" class="link">editor</a></li>
+		</ul>
+	</nav>
+
+	<!-- back button -->
+	<div style="padding:12px 18px;">
+		<button class="btn" onclick="history.back();">Back</button>
+	</div>
+
     <div class="banner">
         <input type="file" accept="image/*" id="banner-upload" hidden>
         <label for="banner-upload" class="banner-upload-btn"><img src="img/upload.png" alt="upload banner"></label>
@@ -27,6 +43,31 @@
         <input type="file" accept="image/*" id="image-upload" hidden>
         <label for="image-upload" class="btn grey upload-btn">Upload Image</label>
     </div>
+
+    <!-- added footer (same simple footer as home.html) -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="footer-col">
+					<ul>
+						<li><a href="about.html">about us</a></li>
+						<li><a href="Contact.html">Contact us</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>follow us</h4>
+					<div class="social-links">
+						<a href="#"><i class="fab fa-facebook-f"></i></a>
+						<a href="#"><i class="fab fa-twitter"></i></a>
+						<a href="#"><i class="fab fa-instagram"></i></a>
+						<div class="footerBottom">
+							<p>copyright &copy; 2023 design by <span class="deasigner">prasid</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>

@@ -1,12 +1,19 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const fileupload = require('express-fileupload');
 
-let initial_path = path.join(__dirname, "public");
+let initial_path = __dirname; // serve project root (where HTML/CSS/JS/img live)
 
 const app = express();
 app.use(express.static(initial_path));
 app.use(fileupload());
+
+// ensure uploads folder exists
+const uploadsDir = path.join(initial_path, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+		fs.mkdirSync(uploadsDir);
+}
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(initial_path, "home.html"));
@@ -18,20 +25,25 @@ app.get('/editor', (req, res) => {
 
 // upload link
 app.post('/upload', (req, res) => {
+    if (!req.files || !req.files.image) {
+        return res.status(400).json({ error: "No file uploaded" });
+    }
+
     let file = req.files.image;
-    let date = new Date();
-    // image name
-    let imagename = date.getDate() + date.getTime() + file.name;
+    let date = Date.now();
+    // make filename safe
+    let imagename = date + "-" + file.name.replace(/\s+/g, '_');
     // image upload path
-    let path = 'public/uploads/' + imagename;
+    let uploadPath = path.join(uploadsDir, imagename);
 
     // create upload
-    file.mv(path, (err, result) => {
+    file.mv(uploadPath, (err) => {
         if(err){
-            throw err;
+            console.error(err);
+            return res.status(500).json({ error: "Upload failed" });
         } else{
-            // our image upload path
-            res.json(`uploads/${imagename}`)
+            // return a usable URL path for client
+            return res.json({ url: `/uploads/${imagename}` });
         }
     })
 })
@@ -41,9 +53,10 @@ app.get("/:blog", (req, res) => {
 })
 
 app.use((req, res) => {
-    res.json("404");
+    res.status(404).json({ error: "404 Not Found" });
 })
 
-app.listen("3000", () => {
-    console.log('listening......');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`listening on ${PORT}...`);
 })
